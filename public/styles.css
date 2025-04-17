@@ -1,0 +1,807 @@
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+  --secondary: #10b981;
+  --dark: #111827;
+  --light: #f9fafb;
+  --gray: #9ca3af;
+  --gray-light: #f3f4f6;
+  --gray-dark: #4b5563;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--dark);
+  background-color: var(--light);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+img {
+  max-width: 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-outline {
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Header & Navigation */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.header.scrolled {
+  padding: 0.5rem 0;
+  background-color: white;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 0;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.logo span {
+  color: var(--secondary);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-link {
+  font-weight: 500;
+  position: relative;
+  padding: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--primary);
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--primary);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: var(--dark);
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 700px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+  overflow: hidden;
+  margin-top: 0;
+  padding-top: 80px;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(var(--primary-dark), transparent 70%);
+  opacity: 0.1;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(var(--secondary), transparent 70%);
+  opacity: 0.1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: var(--gray-dark);
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+}
+
+.highlight {
+  color: var(--primary);
+  position: relative;
+  display: inline-block;
+}
+
+.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background-color: rgba(37, 99, 235, 0.2);
+  z-index: -1;
+}
+
+/* Réalisations Section Styles */
+.year-title {
+  text-align: center; /* Or left: text-align: left; */
+  font-size: 1.8rem;  /* Adjust size as needed */
+  font-weight: 600;
+  color: var(--primary-dark); /* Or another color */
+  margin-top: 3rem; /* Add space above the title */
+  margin-bottom: 2.5rem; /* Add space below the title before the cards */
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+/* Optional: Add an underline to the year title */
+.year-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%; /* Center the line */
+    transform: translateX(-50%); /* Center the line */
+    width: 80px; /* Width of the underline */
+    height: 3px;
+    background-color: var(--secondary); /* Or var(--primary) */
+    border-radius: 2px;
+}
+
+.realisations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.realisation-card {
+  /* Reusing skill-card styles */
+  background-color: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease !important; /* Keep !important if needed due to AOS */
+  border-top: 4px solid var(--primary);
+  will-change: transform; /* Optimization for transform */
+}
+
+.realisations-grid .realisation-card:hover {
+  /* Reusing skill-card hover styles */
+  transform: translateY(-10px) !important; /* Keep !important if needed */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.realisation-card h4 {
+  /* Reusing skill-card h4 styles */
+  color: var(--primary);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.realisation-card p {
+  /* Reusing skill-card p styles */
+  color: var(--gray-dark);
+  margin-bottom: 1rem; /* Added margin-bottom for spacing before tags */
+}
+
+/* Reusing tags styles - ensure they are defined or copy them */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tag {
+  background-color: var(--gray-light);
+  color: var(--gray-dark);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+
+/* Adjust Responsive styles if necessary */
+@media screen and (max-width: 992px) {
+  /* Ensure cards stack correctly if not already handled */
+  .realisation-card {
+      margin-bottom: 1.5rem;
+  }
+}
+
+
+/* Section Styles */
+.section {
+  padding: 6rem 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 4rem;
+  color: var(--gray-dark);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Company Section */
+.company-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.company-image {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+}
+
+.company-image > img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.company-image:hover {
+  transform: translateY(-10px);
+}
+
+.company-info h3 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--dark);
+}
+
+.company-info p {
+  margin-bottom: 1.5rem;
+  color: var(--gray-dark);
+}
+
+/* Skills Cards */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.skill-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease !important;
+  border-top: 4px solid var(--primary);
+  will-change: transform;
+}
+
+.skills-grid .skill-card:hover {
+  transform: translateY(-10px) !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.skill-card h4 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.skill-card p {
+  color: var(--gray-dark);
+}
+
+/* Veille Section */
+.veille {
+  background-color: var(--gray-light);
+}
+
+.veille-content {
+  display: grid;
+  grid-template-columns: 3fr 2fr; /* Keep existing grid layout */
+  gap: 4rem;
+  align-items: center;
+}
+
+/* Modify .veille-image */
+.veille-image {
+  /* Make it a flex container */
+  display: flex; 
+  align-items: center; /* Vertically align logos if heights differ */
+  justify-content: center; /* Center logos horizontally */
+  gap: 2rem; /* Add space between the logos */
+
+  /* Keep existing styles */
+  border-radius: 10px;
+  overflow: hidden; /* Keep this if you want rounded corners to clip images */
+  /* box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);  <- You had this commented out, keep as is */
+  transition: all 0.5s ease;
+  padding: 1rem; /* Optional: Add padding if logos touch edges */
+}
+
+.veille-image:hover {
+  transform: scale(1.02); /* Keep hover effect */
+}
+
+/* Style the images within .veille-image */
+.veille-image img {
+  max-width: 45%; /* Limit width of each logo (adjust % as needed) */
+  height: auto;   /* Maintain aspect ratio */
+  object-fit: contain; /* Ensure the entire logo is visible */
+  /* Remove individual image transitions if the parent handles hover */
+}
+
+
+/* Keep existing .veille-grid and .veille-card styles */
+.veille-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.veille-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.veille-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.veille-card h4 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+/* Responsive adjustments might be needed if the logos look bad on small screens */
+@media screen and (max-width: 992px) {
+  .veille-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+  }
+  
+  .veille-image {
+      order: -1; /* Keeps image on top on smaller screens */
+      /* You might want to adjust gap or logo size here */
+      /* gap: 1rem; */
+  }
+
+  .veille-image img {
+      /* max-width: 40%; Maybe slightly smaller */
+  }
+
+  .veille-grid {
+      grid-template-columns: 1fr;
+  }
+}
+
+/* Synthese Competences Section */
+#synthese-competences {
+  background-color: var(--gray-light); /* Or white or var(--light) */
+  padding-bottom: 4rem; /* Extra padding at the bottom if needed */
+}
+
+.pdf-viewer-container {
+  max-width: 900px; /* Adjust max-width as needed */
+  margin: 2rem auto 0 auto; /* Center the container */
+  border: 1px solid #e5e7eb; /* Light border around the viewer */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  background-color: var(--gray-dark); /* Background for loading/fallback */
+
+  /* Option 1: Fixed Height (as set in HTML) - Simpler */
+   /* height: 600px; /* Already set in HTML, but could be here */
+
+  /* Option 2: Aspect Ratio (Better for Responsiveness) */
+  /* Remove height="600px" from iframe tag if using aspect-ratio */
+  /* aspect-ratio: 8.5 / 11; */ /* Approximate US Letter ratio */
+   aspect-ratio: 1 / 1.414;   /* Approximate A4 ratio (sqrt(2)) */
+   overflow: hidden; /* Needed with aspect-ratio sometimes */
+   position: relative; /* Needed for absolutely positioned iframe below */
+}
+
+.pdf-viewer-container iframe {
+  display: block; /* Remove potential bottom space */
+  border: none; /* Remove default iframe border */
+  width: 100%;
+  
+  /* If using Option 1 (Fixed Height): */
+  /* height: 600px; /* Match HTML or control here */
+
+  /* If using Option 2 (Aspect Ratio): */
+   height: 100%; 
+   position: absolute;
+   top: 0;
+   left: 0;
+}
+
+/* Style the fallback link */
+.pdf-download-link {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.pdf-download-link:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Style fallback text if needed */
+.pdf-viewer-container p { /* Target paragraphs specifically within the container for fallback */
+    color: white; /* Make fallback text visible on dark background */
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .pdf-viewer-container {
+        /* Maybe reduce max-width less drastically or use percentages */
+        /* max-width: 95%; */
+        /* Adjust height or rely on aspect-ratio */
+    }
+}
+
+
+
+@media screen and (max-width: 576px) { /* Example breakpoint for smaller phones */
+    .veille-image {
+        flex-direction: column; /* Stack logos vertically */
+        gap: 1rem;
+    }
+    .veille-image img {
+        max-width: 60%; /* Allow them to be a bit larger when stacked */
+    }
+}
+
+/* Contact Section */
+#contact {
+  background-color: var(--light); /* Or white or var(--gray-light) */
+}
+
+.contact-form-container {
+  max-width: 700px; /* Limit form width */
+  margin: 2rem auto 0 auto; /* Center the form container */
+  background-color: white;
+  padding: 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+  border-top: 4px solid var(--secondary); /* Use secondary color for accent */
+}
+
+.contact-form .form-group {
+  margin-bottom: 1.5rem; /* Space between form fields */
+}
+
+.contact-form label {
+  display: block; /* Make label take its own line */
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--gray-dark);
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #d1d5db; /* Light gray border */
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif; /* Inherit body font */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2); /* Subtle focus ring */
+}
+
+.contact-form textarea {
+  resize: vertical; /* Allow vertical resize only */
+  min-height: 120px;
+}
+
+.contact-form .btn-submit {
+  width: 100%; /* Make button full width */
+  padding: 1rem 1.5rem; /* Slightly larger padding */
+  font-size: 1.1rem;
+  margin-top: 1rem; /* Space above button */
+}
+
+/* Optional: Style placeholder text */
+.contact-form ::placeholder {
+  color: var(--gray);
+  opacity: 1; /* Firefox */
+}
+.contact-form :-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: var(--gray);
+}
+.contact-form ::-ms-input-placeholder { /* Microsoft Edge */
+ color: var(--gray);
+}
+
+
+/* Footer */
+.footer {
+  background-color: var(--dark);
+  color: white;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer-link:hover {
+  color: var(--primary);
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background-color: var(--primary);
+  transform: translateY(-5px);
+}
+
+.copyright {
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+/* Back to top button */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 99;
+}
+
+.back-to-top.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-5px);
+}
+
+/* Responsive */
+@media screen and (max-width: 992px) {
+  .company-content,
+  .veille-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+  }
+  
+  .company-image, .veille-image {
+      order: -1;
+  }
+  
+  .skill-card {
+      margin-bottom: 1.5rem;
+  }
+  
+  .veille-grid {
+      grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero-title {
+      font-size: 2.5rem;
+  }
+  
+  .section-title {
+      font-size: 2rem;
+  }
+  
+  .nav-links {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 70%;
+      height: 100vh;
+      background-color: white;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 5rem 2rem;
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+      transition: right 0.3s ease;
+      z-index: 100;
+  }
+  
+  .nav-links.active {
+      right: 0;
+  }
+  
+  .hamburger {
+      display: block;
+      z-index: 101;
+  }
+  
+  .hamburger.active div:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+  }
+  
+  .hamburger.active div:nth-child(2) {
+      opacity: 0;
+  }
+  
+  .hamburger.active div:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+  }
+  
+  .hero-cta {
+      flex-direction: column;
+  }
+}
