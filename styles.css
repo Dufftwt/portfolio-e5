@@ -520,7 +520,7 @@ img {
   /* Option 2: Aspect Ratio (Better for Responsiveness) */
   /* Remove height="600px" from iframe tag if using aspect-ratio */
   /* aspect-ratio: 8.5 / 11; */ /* Approximate US Letter ratio */
-   aspect-ratio: 1 / 0.9;   /* Approximate A4 ratio (sqrt(2)) */
+   aspect-ratio: 1 / 1;   /* Approximate A4 ratio (sqrt(2)) */
    overflow: hidden; /* Needed with aspect-ratio sometimes */
    position: relative; /* Needed for absolutely positioned iframe below */
 }
